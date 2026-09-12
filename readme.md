@@ -9,7 +9,7 @@ The application separates the database layer, GraphQL API layer, and Streamlit U
 ```text
 GraphQL API/
 │
-├── chinook.db
+├── SQLDB.db
 ├── config.toml
 ├── database.py
 ├── graphql_api.py
@@ -56,15 +56,10 @@ path = "C:/Bhavik/Live_VS_code/GraphQL API/chinook.db"
 
 [graphql]
 allowed_tables = [
-    "Artist",
-    "Album",
-    "Customer"
+    "Customer",
+    "Employees"
 ]
 
-[api]
-host = "127.0.0.1"
-port = 8000
-```
 
 ## Database Path
 
@@ -72,7 +67,7 @@ The database location is defined under:
 
 ```toml
 [database]
-path = "C:/Bhavik/Live_VS_code/GraphQL API/chinook.db"
+path = "DB_Name.db"
 ```
 
 Update this value when using a different SQLite database.
@@ -621,8 +616,6 @@ add the table to:
 ```toml
 [graphql]
 allowed_tables = [
-    "Artist",
-    "Album",
     "Customer",
     "Employee"
 ]
