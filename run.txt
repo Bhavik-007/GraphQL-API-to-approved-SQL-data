@@ -1,0 +1,16 @@
+-----Activate virtual environment
+.venv\Scripts\activate
+
+------Start the GraphQL API
+uvicorn server:app --reload --port 8000
+
+
+----GraphQL:
+http://localhost:8000/graphql
+
+And Swagger:
+http://localhost:8000/docs
+
+-----Open another terminal:Start Streamlit
+streamlit run app.py
+

@@ -1,0 +1,7 @@
+streamlit
+fastapi
+uvicorn
+strawberry-graphql
+requests
+pandas
+tomli

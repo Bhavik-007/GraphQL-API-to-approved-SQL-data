@@ -1,0 +1,15 @@
+[database]
+path = "chinook.db"
+
+[graphql]
+allowed_tables = [
+    "employees",
+    "customers"
+]
+
+[api]
+host = "127.0.0.1"
+port = 8000
+
+[app]
+page_size = 1000
