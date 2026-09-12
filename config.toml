@@ -1,5 +1,5 @@
 [database]
-path = "chinook.db"
+path = "YOUR_DBNAME.db"
 
 [graphql]
 allowed_tables = [
@@ -8,8 +8,8 @@ allowed_tables = [
 ]
 
 [api]
-host = "127.0.0.1"
-port = 8000
+host = ""
+port = 
 
 [app]
 page_size = 1000
