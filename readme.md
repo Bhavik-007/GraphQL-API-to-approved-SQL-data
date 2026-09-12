@@ -4,46 +4,6 @@ A Python-based enterprise data access application that exposes selected SQLite d
 
 The application separates the database layer, GraphQL API layer, and Streamlit UI layer so that users can access approved database data without having direct access to the SQLite database.
 
----
-
-## 1. Architecture
-
-```text
-                    ┌──────────────────────┐
-                    │       User           │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │      Streamlit       │
-                    │     Data Explorer    │
-                    └──────────┬───────────┘
-                               │
-                         GraphQL Request
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │       FastAPI        │
-                    │    GraphQL Server    │
-                    └──────────┬───────────┘
-                               │
-                         Table Validation
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │     config.toml      │
-                    │   Allowed Tables     │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │       SQLite         │
-                    │      chinook.db      │
-                    └──────────────────────┘
-```
-
----
-
 # 2. Project Structure
 
 ```text
@@ -572,40 +532,6 @@ Album.csv
 
 ---
 
-# 20. Data Flow
-
-When the user selects a table:
-
-```text
-User selects table
-        │
-        ▼
-Streamlit
-        │
-        │ GraphQL request
-        ▼
-FastAPI
-        │
-        ▼
-Validate table
-        │
-        ▼
-config.toml
-        │
-        ▼
-SQLite
-        │
-        ▼
-Return data
-        │
-        ▼
-Streamlit
-        │
-        ▼
-Dynamic filters + Data Grid
-```
-
----
 
 # 21. Security Model
 
@@ -644,47 +570,6 @@ For production deployment, additional controls should be considered:
 * Restricted database permissions
 * Environment-based configuration
 * Secrets management
-
----
-
-# 22. Production Recommendation
-
-The current implementation is suitable for development and prototyping.
-
-For an enterprise production implementation, the recommended architecture is:
-
-```text
-                         Users
-                           │
-                           ▼
-                    ┌─────────────┐
-                    │  Streamlit  │
-                    │     UI      │
-                    └──────┬──────┘
-                           │
-                           ▼
-                    ┌─────────────┐
-                    │    API      │
-                    │ Gateway /   │
-                    │ Authentication
-                    └──────┬──────┘
-                           │
-                           ▼
-                    ┌─────────────┐
-                    │   FastAPI   │
-                    │   GraphQL   │
-                    └──────┬──────┘
-                           │
-                           ▼
-                    ┌─────────────┐
-                    │    SQLite   │
-                    │   Database  │
-                    └─────────────┘
-```
-
-For large KPI datasets, filtering and pagination should be executed at the database/API layer rather than loading the complete dataset into Streamlit.
-
----
 
 # 23. Troubleshooting
 
